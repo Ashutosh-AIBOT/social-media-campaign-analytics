@@ -1,143 +1,191 @@
-# 🔧 [PROJECT_NAME] — Backend
+# 📊 Social Media Ads Analysis
 
-> [ONE LINE — what this backend does. Be specific. No generic lines.]
+A full end-to-end data analysis and machine learning project on 300,000 social media ad campaigns across 4 channels, 50 companies, and 5 customer segments — built entirely in Python with an interactive React dashboard.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green?style=flat-square&logo=fastapi)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=flat-square&logo=postgresql)
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue?style=flat-square&logo=docker)
-![Status](https://img.shields.io/badge/Stage-v0_Skeleton-orange?style=flat-square)
+**Live Dashboard → [social-ads-dashboard.vercel.app](https://social-ads-dashboard.vercel.app)**
 
 ---
 
-## 📋 Table of Contents
+## 🔍 Project Overview
 
-- [What This Does](#-what-this-does)
-- [Architecture](#-architecture)
-- [Project Structure](#-project-structure)
-- [Quick Start](#-quick-start)
-- [Environment Variables](#-environment-variables)
-- [API Overview](#-api-overview)
-- [Version Roadmap](#-version-roadmap)
-- [Author](#-author)
+This project takes raw social media advertising data and runs it through a complete 10-pipeline system — from raw CSV cleaning all the way to machine learning models and an interactive web dashboard.
+
+The data covers **299,815 campaigns** run in 2022 across Instagram, Facebook, Twitter, and Pinterest, with full revenue, profit, ROI, CTR, and engagement metrics.
 
 ---
 
-## 🧠 What This Does
+## 🚨 Key Finding
 
-> Fill this when you start building. Answer 3 things:
-> 1. What problem does this solve?
-> 2. How does it solve it?
-> 3. Who is it for?
-
-**Current Status:** `v0` — Skeleton only. Folder structure set up. Docker running. Health check live. No features yet.
+> **Pinterest is losing $165 million.**
+> Every other channel delivers ROI ~4.0 with 87%+ profitable campaigns.
+> Pinterest delivers ROI 0.72, engagement score of 1.0, and only 30% profitable campaigns.
+> The data makes the case to cut Pinterest entirely.
 
 ---
 
-## 🏗️ Architecture
+## 📁 Project Structure
 
-> Add your architecture diagram here when HLD_v0.md is written.
-> Paste an image or ASCII diagram showing Frontend → Backend → DB → any external service.
-
-Full system design → [HLD_v0.md](./HLD_v0.md)
-
----
-
-## 🗂️ Project Structure
-
-| File / Folder | What It Covers |
-|---|---|
-| [README.md](./README.md) | You are here. Start here always. |
-| [HLD_v0.md](./HLD_v0.md) | System architecture — components, data flow, tech choices |
-| [LLD_v0.md](./LLD_v0.md) | Detailed design — functions, classes, sequence diagrams |
-| [API_CONTRACTS.md](./API_CONTRACTS.md) | Every endpoint — URL, method, request, response, errors |
-| [SCHEMA.md](./SCHEMA.md) | All DB tables, columns, indexes — human readable |
-| [schema_v0.sql](./schema_v0.sql) | Raw SQL — create all v0 tables |
-| [ERD.png](./ERD.png) | Visual diagram — all DB tables and relationships |
-| [docker-compose.yml](./docker-compose.yml) | One command spins up DB + Redis + all dependencies |
-| [.env.example](./.env.example) | All env vars with dummy values — copy to .env, never commit real .env |
-| [RUNBOOK.md](./RUNBOOK.md) | Deploy, rollback, restart services, 3am incident fixes |
-| [SCALE_GUIDE.md](./SCALE_GUIDE.md) | Stack decisions from 0 to 1 billion users |
-| [SCALING_QUESTIONS.md](./SCALING_QUESTIONS.md) | 20 questions to ask before building any feature |
-| [VERSION_ROADMAP.md](./VERSION_ROADMAP.md) | v0 to v4 — what changes at each stage, mindset per stage |
-| [ADR/](./ADR/) | Architecture Decision Records — one file per major tech choice |
-
----
-
-## ⚡ Quick Start
-
-**Prerequisites:** Python 3.11+, Docker, Git
-```bash
-# 1. Clone the repo
-git clone https://github.com/ashutosh/[REPO-NAME].git
-cd [REPO-NAME]
-
-# 2. Create virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Set up environment variables
-cp .env.example .env
-# Open .env and fill in real values
-
-# 5. Start all dependencies
-docker-compose up -d
-
-# 6. Start the server
-uvicorn main:app --reload
-
-# 7. Open API docs
-# http://localhost:8000/docs
+```
+Social-Media-Ads-Analysis/
+│
+├── notebooks/
+│   ├── pipeline_1.py        # Load & clean raw data
+│   ├── pipeline_2.py        # Exploratory data analysis
+│   ├── pipeline_3.py        # Business insights
+│   ├── pipeline_4.py        # Statistical testing
+│   ├── pipeline_5.py        # Feature engineering
+│   ├── pipeline_6.py        # Model building (with leakage check)
+│   ├── pipeline_6b.py       # Model building (clean, no leakage)
+│   ├── pipeline_7.py        # XGBoost + AdaBoost
+│   ├── pipeline_8.py        # Static matplotlib charts (14 PNGs)
+│   ├── pipeline_9.py        # Interactive Plotly dashboards (4 HTML)
+│   └── pipeline_10.py       # Master runner — one line runs everything
+│
+├── charts/
+│   ├── p8_01_kpi_summary.png
+│   ├── p8_02_channel.png
+│   ├── p8_03_pinterest.png
+│   ├── p8_04_monthly.png
+│   ├── p8_05_audience.png
+│   ├── p8_06_campaign_goal.png
+│   ├── p8_07_segment.png
+│   ├── p8_08_correlation.png
+│   ├── p8_09_roc_curves.png
+│   ├── p8_10_model_comparison.png
+│   ├── p8_11_feature_importance.png
+│   ├── p8_12_confusion.png
+│   ├── p8_13_duration.png
+│   └── p8_14_location.png
+│
+├── social-ads-dashboard/    # React web dashboard
+│   ├── src/
+│   │   └── App.js
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## 🔑 Environment Variables
+## ⚙️ Pipeline Architecture
 
-| Variable | What It Is | Example |
-|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@localhost:5432/db` |
-| `SECRET_KEY` | JWT secret key | `your-secret-key-here` |
-| `ENVIRONMENT` | App environment | `development` |
+| Pipeline | Task | Input | Output |
+|----------|------|-------|--------|
+| 1 | Load & Clean | `social_media_ads.csv` | `p1_clean.csv` |
+| 2 | EDA | `p1_clean.csv` | `p2_eda_summary.csv` |
+| 3 | Business Insights | `p1_clean.csv` | `p3_business_insights.csv` |
+| 4 | Statistical Tests | `p1_clean.csv` | `p4_statistical_tests.csv` |
+| 5 | Feature Engineering | `p1_clean.csv` | `p5_features.csv` |
+| 6 | ML Models (leakage check) | `p5_features.csv` | `p6_model_results.csv` |
+| 6B | ML Models (clean) | `p5_features.csv` | `p6b_model_results.csv` |
+| 7 | XGBoost + AdaBoost | `p5_features.csv` | `p7_boosting_results.csv` |
+| 8 | Static Charts | `p1_clean.csv` | 14 PNG charts |
+| 9 | Interactive Dashboards | `p1_clean.csv` | 4 HTML dashboards |
+| 10 | Master Runner | `social_media_ads.csv` | Everything |
 
-> Add new variables here as you add them. Full list → [.env.example](./.env.example)
+**Run everything in one line:**
+```python
+p10 = run_pipeline_10('/content/social_media_ads.csv')
+```
 
 ---
 
-## 📡 API Overview
+## 📈 Business Insights
 
-| Method | Endpoint | What It Does |
-|---|---|---|
-| `GET` | `/health` | Health check — all dependencies status |
+| Metric | Value |
+|--------|-------|
+| Total Revenue | $7.39B |
+| Total Profit | $5.06B |
+| Total Campaigns | 254,960 |
+| Avg ROI | 3.18 |
+| Avg CTR | 31.42% |
+| Profitable Campaigns | 73.1% |
 
-> Add endpoints here as you build them. Full contracts → [API_CONTRACTS.md](./API_CONTRACTS.md)
+**Channel Performance:**
+
+| Channel | ROI | Profit | Profitable % |
+|---------|-----|--------|--------------|
+| Instagram | 4.01 | $1.75B | 87% |
+| Twitter | 4.01 | $1.74B | 88% |
+| Facebook | 3.99 | $1.74B | 87% |
+| Pinterest | 0.72 | **-$165M** | 30% |
+
+**Statistical Tests (key results):**
+- Channel significantly affects profitability (Chi² p=0.00) ✅
+- Gender ROI difference is NOT significant (p=0.19)
+- Location has NO significant impact on ROI (ANOVA p=0.66)
+- Duration has NO significant impact on ROI (ANOVA p=0.85)
 
 ---
 
-## 📌 Version Roadmap
+## 🤖 Machine Learning Results
 
-| Version | Scale | What Gets Built |
-|---|---|---|
-| `v0` ← **you are here** | Local only | Skeleton connected. Docker running. Health check live. |
-| `v1` | 0 → 10K users | Core features. Auth. Deployed on cloud. CI/CD live. |
-| `v2` | 10K → 500K | Redis cache. Read replicas. Rate limiting. RabbitMQ. |
-| `v3` | 500K → 10M | Kafka. Kubernetes. Multi-region. Distributed tracing. |
-| `v4` | 10M → 1B | DB sharding. Custom infra. Dedicated ML infrastructure. |
+Three prediction targets, five models, no data leakage:
 
-> Full breakdown of every stage with mindset → [VERSION_ROADMAP.md](./VERSION_ROADMAP.md)
+| Target | Best Model | AUC |
+|--------|-----------|-----|
+| Campaign Success | Gradient Boosting | **0.9888** |
+| High Profit | AdaBoost | **0.8571** |
+| High ROI | AdaBoost | **0.7552** |
+
+**Top features driving High ROI:**
+1. CPC (0.241)
+2. Engagement × CTR (0.207)
+3. CPM (0.198)
+4. Channel Score (0.181)
+
+---
+
+## 🌐 Interactive Dashboard
+
+Built in React with Recharts. Five sections:
+
+- **Overview** — KPI cards, monthly trends, channel revenue
+- **Pinterest Problem** — deep dive into the $165M loss
+- **Audience** — segment, gender, age, location breakdown
+- **ML Models** — AUC comparison, ROC curves, feature importance
+- **Campaign Predictor** — input campaign params → get 3 predictions live
+
+---
+
+## 🛠️ Tech Stack
+
+**Analysis**
+- Python 3.12, Pandas, NumPy
+- Scikit-learn, XGBoost
+- Matplotlib, Seaborn, Plotly
+
+**Dashboard**
+- React, Recharts
+- Hosted on Vercel
+
+---
+
+## 🚀 Run Locally
+
+**Python pipelines (Google Colab or local):**
+```bash
+pip install pandas numpy matplotlib seaborn plotly scikit-learn xgboost
+```
+
+```python
+# Run all 10 pipelines at once
+p10 = run_pipeline_10('/content/social_media_ads.csv')
+```
+
+**React dashboard:**
+```bash
+cd social-ads-dashboard
+npm install
+npm start
+```
 
 ---
 
 ## 👤 Author
 
 **Ashutosh**
-[GitHub](https://github.com/ashutosh) · [LinkedIn](https://linkedin.com/in/ashutosh)
+GitHub → [github.com/Ashutosh-AIBOT](https://github.com/Ashutosh-AIBOT)
 
 ---
-
-> *"Debugging is twice as hard as writing the code in the first place."* — Brian Kernighan
->
-> _(Replace this with your own words when you finish this project.)_
+# Social-Media-Ads-Analysis-Dashboard
