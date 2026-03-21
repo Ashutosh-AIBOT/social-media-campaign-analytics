@@ -230,28 +230,44 @@ jupyter notebook notebooks/
 
 ---
 
-## 📁 Repository Structure
+## 📁 Folder Structure
 ```
-social-media-campaign-analytics/
-│
-├── data/
-│   ├── raw/                        # Original Kaggle CSV
-│   └── cleaned/                    # Processed dataset
+Social-Media-Ads-Analysis/
 │
 ├── notebooks/
-│   ├── 01_data_cleaning.ipynb      # Cleaning pipeline
-│   ├── 02_eda.ipynb                # Full EDA
-│   ├── 03_ab_testing.ipynb         # Statistical A/B tests
-│   ├── 04_audience_segmentation.ipynb  # KMeans clustering
-│   ├── 05_ctr_prediction.ipynb     # CTR prediction model
-│   └── 06_attribution.ipynb        # Channel attribution
+│   ├── pipeline_1.py        # Load & clean raw data
+│   ├── pipeline_2.py        # Exploratory data analysis
+│   ├── pipeline_3.py        # Business insights
+│   ├── pipeline_4.py        # Statistical testing
+│   ├── pipeline_5.py        # Feature engineering
+│   ├── pipeline_6.py        # Model building (with leakage check)
+│   ├── pipeline_6b.py       # Model building (clean, no leakage)
+│   ├── pipeline_7.py        # XGBoost + AdaBoost
+│   ├── pipeline_8.py        # Static matplotlib charts (14 PNGs)
+│   ├── pipeline_9.py        # Interactive Plotly dashboards (4 HTML)
+│   └── pipeline_10.py       # Master runner — one line runs everything
 │
-├── dashboard/
-│   ├── campaign_dashboard.pbix     # Power BI file
-│   └── campaign_excel.xlsx         # Excel pivot dashboard
+├── charts/
+│   ├── p8_01_kpi_summary.png
+│   ├── p8_02_channel.png
+│   ├── p8_03_pinterest.png
+│   ├── p8_04_monthly.png
+│   ├── p8_05_audience.png
+│   ├── p8_06_campaign_goal.png
+│   ├── p8_07_segment.png
+│   ├── p8_08_correlation.png
+│   ├── p8_09_roc_curves.png
+│   ├── p8_10_model_comparison.png
+│   ├── p8_11_feature_importance.png
+│   ├── p8_12_confusion.png
+│   ├── p8_13_duration.png
+│   └── p8_14_location.png
 │
-├── visualizations/                 # All saved EDA plots
-├── requirements.txt
+├── social-ads-dashboard/    # React web dashboard
+│   ├── src/
+│   │   └── App.js
+│   └── package.json
+│
 └── README.md
 ```
 
