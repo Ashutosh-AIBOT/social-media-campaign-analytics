@@ -295,9 +295,3 @@ B.Tech Electronics Engineering · CGPA 7.5 · Batch 2026
 >
 > — Ashutosh, building this from zero.
 ```
-
----
-
-**Commit message:**
-```
-docs: add professional README with dataset, pipeline, KPI metrics and all links
