@@ -5,3 +5,6 @@ All Csv Files/p1_*.csv
 node_modules/
 build/
 *.csv
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-vendored=true
