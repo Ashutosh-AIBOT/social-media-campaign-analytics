@@ -1,191 +1,303 @@
-# 📊 Social Media Ads Analysis
+# 📊 Social Media Campaign Analytics — MetricFlow
 
-A full end-to-end data analysis and machine learning project on 300,000 social media ad campaigns across 4 channels, 50 companies, and 5 customer segments — built entirely in Python with an interactive React dashboard.
-
-**Live Dashboard → [social-ads-dashboard.vercel.app](https://social-ads-dashboard.vercel.app)**
-
----
-
-## 🔍 Project Overview
-
-This project takes raw social media advertising data and runs it through a complete 10-pipeline system — from raw CSV cleaning all the way to machine learning models and an interactive web dashboard.
-
-The data covers **299,815 campaigns** run in 2022 across Instagram, Facebook, Twitter, and Pinterest, with full revenue, profit, ROI, CTR, and engagement metrics.
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
+![Power BI](https://img.shields.io/badge/Power_BI-DAX-yellow?style=flat-square)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-orange?style=flat-square&logo=scikitlearn)
+![Excel](https://img.shields.io/badge/Excel-Analysis-green?style=flat-square&logo=microsoftexcel)
+![Status](https://img.shields.io/badge/Stage-Complete-green?style=flat-square)
 
 ---
 
-## 🚨 Key Finding
+🌐 **Live Demo:** [forecast-x-frontend-vz8c.vercel.app](https://forecast-x-frontend-vz8c.vercel.app/)
+📦 **Dataset:** [Marketing Campaign Performance — Kaggle](https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset)
+👤 **Author:** [Ashutosh — GitHub](https://github.com/Ashutosh-AIBOT) · [LinkedIn](https://www.linkedin.com/in/ashutosh1975271/)
+💼 **Portfolio:** [ashutosh-portfolio-kappa.vercel.app](https://ashutosh-portfolio-kappa.vercel.app/)
 
-> **Pinterest is losing $165 million.**
-> Every other channel delivers ROI ~4.0 with 87%+ profitable campaigns.
-> Pinterest delivers ROI 0.72, engagement score of 1.0, and only 30% profitable campaigns.
-> The data makes the case to cut Pinterest entirely.
-
----
-
-## 📁 Project Structure
-
-```
-Social-Media-Ads-Analysis/
-│
-├── notebooks/
-│   ├── pipeline_1.py        # Load & clean raw data
-│   ├── pipeline_2.py        # Exploratory data analysis
-│   ├── pipeline_3.py        # Business insights
-│   ├── pipeline_4.py        # Statistical testing
-│   ├── pipeline_5.py        # Feature engineering
-│   ├── pipeline_6.py        # Model building (with leakage check)
-│   ├── pipeline_6b.py       # Model building (clean, no leakage)
-│   ├── pipeline_7.py        # XGBoost + AdaBoost
-│   ├── pipeline_8.py        # Static matplotlib charts (14 PNGs)
-│   ├── pipeline_9.py        # Interactive Plotly dashboards (4 HTML)
-│   └── pipeline_10.py       # Master runner — one line runs everything
-│
-├── charts/
-│   ├── p8_01_kpi_summary.png
-│   ├── p8_02_channel.png
-│   ├── p8_03_pinterest.png
-│   ├── p8_04_monthly.png
-│   ├── p8_05_audience.png
-│   ├── p8_06_campaign_goal.png
-│   ├── p8_07_segment.png
-│   ├── p8_08_correlation.png
-│   ├── p8_09_roc_curves.png
-│   ├── p8_10_model_comparison.png
-│   ├── p8_11_feature_importance.png
-│   ├── p8_12_confusion.png
-│   ├── p8_13_duration.png
-│   └── p8_14_location.png
-│
-├── social-ads-dashboard/    # React web dashboard
-│   ├── src/
-│   │   └── App.js
-│   └── package.json
-│
-└── README.md
-```
 
 ---
 
-## ⚙️ Pipeline Architecture
+## 📋 Table of Contents
 
-| Pipeline | Task | Input | Output |
-|----------|------|-------|--------|
-| 1 | Load & Clean | `social_media_ads.csv` | `p1_clean.csv` |
-| 2 | EDA | `p1_clean.csv` | `p2_eda_summary.csv` |
-| 3 | Business Insights | `p1_clean.csv` | `p3_business_insights.csv` |
-| 4 | Statistical Tests | `p1_clean.csv` | `p4_statistical_tests.csv` |
-| 5 | Feature Engineering | `p1_clean.csv` | `p5_features.csv` |
-| 6 | ML Models (leakage check) | `p5_features.csv` | `p6_model_results.csv` |
-| 6B | ML Models (clean) | `p5_features.csv` | `p6b_model_results.csv` |
-| 7 | XGBoost + AdaBoost | `p5_features.csv` | `p7_boosting_results.csv` |
-| 8 | Static Charts | `p1_clean.csv` | 14 PNG charts |
-| 9 | Interactive Dashboards | `p1_clean.csv` | 4 HTML dashboards |
-| 10 | Master Runner | `social_media_ads.csv` | Everything |
-
-**Run everything in one line:**
-```python
-p10 = run_pipeline_10('/content/social_media_ads.csv')
-```
+- [What This Does](#-what-this-does)
+- [Real Numbers](#-real-numbers)
+- [Dataset](#-dataset)
+- [Architecture](#-architecture)
+- [What I Built](#-what-i-built)
+- [Key Metrics Explained](#-key-metrics-explained)
+- [Quick Start](#-quick-start)
+- [Tech Stack](#-tech-stack)
+- [Project Status](#-project-status)
+- [Links](#-links)
+- [Author](#-author)
 
 ---
 
-## 📈 Business Insights
+## 🧠 What This Does
+
+End-to-end marketing analytics pipeline on real
+multi-platform ad campaign performance data covering
+Facebook, Instagram, Google, LinkedIn, and Twitter.
+
+1. **Problem** — Marketing team has no unified view of
+   ad performance across platforms — no way to compare
+   ROAS, CTR, or ROI across channels in one place
+2. **Solution** — Full analytics pipeline from raw campaign
+   data → EDA → A/B testing → audience segmentation →
+   cross-platform Power BI dashboard
+3. **For** — Data Analyst / Marketing Analyst / BI Analyst
+   hiring managers looking for real campaign analytics proof
+
+---
+
+## 📊 Real Numbers
 
 | Metric | Value |
 |--------|-------|
-| Total Revenue | $7.39B |
-| Total Profit | $5.06B |
-| Total Campaigns | 254,960 |
-| Avg ROI | 3.18 |
-| Avg CTR | 31.42% |
-| Profitable Campaigns | 73.1% |
-
-**Channel Performance:**
-
-| Channel | ROI | Profit | Profitable % |
-|---------|-----|--------|--------------|
-| Instagram | 4.01 | $1.75B | 87% |
-| Twitter | 4.01 | $1.74B | 88% |
-| Facebook | 3.99 | $1.74B | 87% |
-| Pinterest | 0.72 | **-$165M** | 30% |
-
-**Statistical Tests (key results):**
-- Channel significantly affects profitability (Chi² p=0.00) ✅
-- Gender ROI difference is NOT significant (p=0.19)
-- Location has NO significant impact on ROI (ANOVA p=0.66)
-- Duration has NO significant impact on ROI (ANOVA p=0.85)
+| Platforms Covered | Facebook, Instagram, Google, LinkedIn, Twitter |
+| Key KPIs Tracked | CTR, CPC, CPM, ROAS, ROI, Conversions |
+| Analysis Types | EDA, A/B Testing, Segmentation, Attribution |
+| ML Applied | KMeans Audience Segmentation, CTR Prediction |
+| Dashboard | Power BI with DAX measures |
+| Excel Analysis | Pivot tables + slicers |
 
 ---
 
-## 🤖 Machine Learning Results
+## 🔢 Dataset
 
-Three prediction targets, five models, no data leakage:
-
-| Target | Best Model | AUC |
-|--------|-----------|-----|
-| Campaign Success | Gradient Boosting | **0.9888** |
-| High Profit | AdaBoost | **0.8571** |
-| High ROI | AdaBoost | **0.7552** |
-
-**Top features driving High ROI:**
-1. CPC (0.241)
-2. Engagement × CTR (0.207)
-3. CPM (0.198)
-4. Channel Score (0.181)
+| Field | Detail |
+|-------|--------|
+| Source | [Marketing Campaign Performance — Kaggle](https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset) |
+| Platforms | Facebook, Instagram, Google, LinkedIn, Twitter |
+| Features | Campaign Type, Platform, Spend, Impressions, Clicks, Conversions, CTR, CPC, CPM, ROAS, ROI |
+| Use Case | Multi-channel attribution, budget optimization, audience targeting |
 
 ---
 
-## 🌐 Interactive Dashboard
+## 🏗️ Architecture
+```
+Raw Campaign CSV (Multi-platform)
+        ↓
+Data Cleaning
+  → Handle nulls and duplicates
+  → Standardize platform and campaign names
+  → Fix data types for spend and date columns
+        ↓
+EDA
+  → CTR by platform comparison
+  → ROAS by campaign type
+  → Spend vs conversion scatter
+  → ROI distribution across channels
+  → CPM and CPC trends over time
+        ↓
+A/B Testing
+  → Ad creative performance comparison
+  → Statistical significance testing
+  → Winning variant identification
+        ↓
+Audience Segmentation (KMeans)
+  → High ROAS segments
+  → Low CTR at-risk segments
+  → Budget efficiency clusters
+        ↓
+CTR Prediction Model
+  → Logistic Regression baseline
+  → Feature importance analysis
+        ↓
+Cross-Platform Attribution
+  → First-touch vs last-touch
+  → Revenue attribution by channel
+        ↓
+Power BI Executive Dashboard
+  → Platform comparison KPI cards
+  → ROAS and ROI by campaign
+  → Budget allocation recommendations
+        ↓
+Excel Dashboard
+  → Pivot tables + slicers
+  → KPI summary sheet
+```
 
-Built in React with Recharts. Five sections:
+---
 
-- **Overview** — KPI cards, monthly trends, channel revenue
-- **Pinterest Problem** — deep dive into the $165M loss
-- **Audience** — segment, gender, age, location breakdown
-- **ML Models** — AUC comparison, ROC curves, feature importance
-- **Campaign Predictor** — input campaign params → get 3 predictions live
+## 🔨 What I Built
+
+### 1. Data Cleaning
+- Loaded multi-platform campaign performance data
+- Handled missing values in spend and conversion columns
+- Standardized platform names and campaign type labels
+- Fixed date formats for time-series analysis
+- Removed duplicate campaign entries
+
+### 2. EDA — Full Campaign Analysis
+- CTR comparison across all 5 platforms
+- ROAS breakdown by campaign type and platform
+- Spend efficiency: revenue generated per ₹1 spent
+- Conversion funnel: Impressions → Clicks → Conversions
+- CPC and CPM trend analysis over time
+- Top performing campaigns by ROI
+
+### 3. A/B Testing
+- Compared ad creative variants for statistical significance
+- Used two-sample t-test for CTR and conversion rate
+- Identified winning ad variants per platform
+- Quantified uplift from better-performing creatives
+
+### 4. Audience Segmentation (KMeans)
+- Clustered campaigns into performance tiers
+- High ROAS / High CTR segment — scale budget here
+- Low ROAS / High Spend segment — cut or optimize
+- Medium performance segment — A/B test candidates
+
+### 5. CTR Prediction
+- Features: platform, campaign type, spend, impressions, CPM
+- Logistic Regression for binary CTR above/below median
+- Feature importance: which factors drive click-through
+
+### 6. Power BI Dashboard
+- Platform-level KPI cards (CTR, ROAS, ROI, CPC, CPM)
+- Campaign type performance comparison bar charts
+- Spend vs ROAS scatter with platform color coding
+- Budget allocation recommendation visuals
+- Time-series trend for weekly campaign performance
+- All DAX measures for calculated KPIs
+
+### 7. Excel Analysis
+- Pivot tables for platform × campaign type breakdown
+- Slicers for date range, platform, and campaign type
+- KPI summary sheet with conditional formatting
+
+---
+
+## 📐 Key Metrics Explained
+
+| Metric | Formula | What It Tells You |
+|--------|---------|------------------|
+| CTR | Clicks / Impressions × 100 | Ad relevance and engagement |
+| CPC | Spend / Clicks | Cost efficiency per click |
+| CPM | Spend / Impressions × 1000 | Cost to reach 1,000 people |
+| ROAS | Revenue / Ad Spend | Revenue generated per ₹1 spent |
+| ROI | (Revenue - Spend) / Spend × 100 | Profit percentage on ad spend |
+| Conversion Rate | Conversions / Clicks × 100 | Quality of traffic driven |
+
+---
+
+## ⚡ Quick Start
+
+**Prerequisites:** Python 3.11+, Git
+```bash
+# 1. Clone the repo
+git clone https://github.com/Ashutosh-AIBOT/social-media-campaign-analytics.git
+cd social-media-campaign-analytics
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Download dataset from Kaggle
+# https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset
+# Place CSV in data/raw/
+
+# 5. Run notebooks in order
+jupyter notebook notebooks/
+
+# Notebook order:
+# 01_data_cleaning.ipynb
+# 02_eda.ipynb
+# 03_ab_testing.ipynb
+# 04_audience_segmentation.ipynb
+# 05_ctr_prediction.ipynb
+# 06_attribution.ipynb
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Analysis**
-- Python 3.12, Pandas, NumPy
-- Scikit-learn, XGBoost
-- Matplotlib, Seaborn, Plotly
-
-**Dashboard**
-- React, Recharts
-- Hosted on Vercel
+| Tool | Purpose |
+|------|---------|
+| Python 3.11 | Core language |
+| Pandas + NumPy | Data cleaning and manipulation |
+| Matplotlib + Seaborn | Static EDA charts |
+| Plotly | Interactive visualizations |
+| Scikit-learn | KMeans segmentation, CTR prediction |
+| Statsmodels | A/B test significance testing |
+| Power BI (DAX) | Cross-platform BI dashboard |
+| Microsoft Excel | Pivot tables + KPI summary |
+| Git | Version control |
 
 ---
 
-## 🚀 Run Locally
-
-**Python pipelines (Google Colab or local):**
-```bash
-pip install pandas numpy matplotlib seaborn plotly scikit-learn xgboost
+## 📁 Repository Structure
+```
+social-media-campaign-analytics/
+│
+├── data/
+│   ├── raw/                        # Original Kaggle CSV
+│   └── cleaned/                    # Processed dataset
+│
+├── notebooks/
+│   ├── 01_data_cleaning.ipynb      # Cleaning pipeline
+│   ├── 02_eda.ipynb                # Full EDA
+│   ├── 03_ab_testing.ipynb         # Statistical A/B tests
+│   ├── 04_audience_segmentation.ipynb  # KMeans clustering
+│   ├── 05_ctr_prediction.ipynb     # CTR prediction model
+│   └── 06_attribution.ipynb        # Channel attribution
+│
+├── dashboard/
+│   ├── campaign_dashboard.pbix     # Power BI file
+│   └── campaign_excel.xlsx         # Excel pivot dashboard
+│
+├── visualizations/                 # All saved EDA plots
+├── requirements.txt
+└── README.md
 ```
 
-```python
-# Run all 10 pipelines at once
-p10 = run_pipeline_10('/content/social_media_ads.csv')
-```
+---
 
-**React dashboard:**
-```bash
-cd social-ads-dashboard
-npm install
-npm start
-```
+## 📊 Project Status
 
+| Deliverable | Status |
+|-------------|--------|
+| Data Cleaning | ✅ Complete |
+| EDA | ✅ Complete |
+| A/B Testing | ✅ Complete |
+| Audience Segmentation | ✅ Complete |
+| CTR Prediction | ✅ Complete |
+| Cross-Platform Attribution | ✅ Complete |
+| Power BI Dashboard | ✅ Complete |
+| Excel Dashboard | ✅ Complete |
+
+---
+## 🌐 Links
+
+| Resource | URL |
+|----------|-----|
+| 🚀 Live Demo | [forecast-x-frontend-vz8c.vercel.app](https://forecast-x-frontend-vz8c.vercel.app/) |
+| 📦 Dataset | [Marketing Campaign Performance — Kaggle](https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset) |
+| 💼 Portfolio | [ashutosh-portfolio-kappa.vercel.app](https://ashutosh-portfolio-kappa.vercel.app/) |
+| 🐙 GitHub | [github.com/Ashutosh-AIBOT](https://github.com/Ashutosh-AIBOT) |
+| 🔗 LinkedIn | [linkedin.com/in/ashutosh1975271](https://www.linkedin.com/in/ashutosh1975271/) |
 ---
 
 ## 👤 Author
 
 **Ashutosh**
-GitHub → [github.com/Ashutosh-AIBOT](https://github.com/Ashutosh-AIBOT)
+B.Tech Electronics Engineering · CGPA 7.5 · Batch 2026
+[GitHub](https://github.com/Ashutosh-AIBOT) · [LinkedIn](https://www.linkedin.com/in/ashutosh1975271/) · [Portfolio](https://ashutosh-portfolio-kappa.vercel.app/)
 
 ---
-# Social-Media-Ads-Analysis-Dashboard
+
+> *"5 platforms. Every rupee tracked.*
+> *This is what real marketing analytics looks like."*
+>
+> — Ashutosh, building this from zero.
+```
+
+---
+
+**Commit message:**
+```
+docs: add professional README with dataset, pipeline, KPI metrics and all links
