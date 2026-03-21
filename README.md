@@ -245,7 +245,7 @@ Social-Media-Ads-Analysis/
 │   ├── pipeline_7.py        # XGBoost + AdaBoost
 │   ├── pipeline_8.py        # Static matplotlib charts (14 PNGs)
 │   ├── pipeline_9.py        # Interactive Plotly dashboards (4 HTML)
-│   └── pipeline_10.py       # Master runner — one line runs everything
+│   └── pipeline_10.py       # Master runner — one line runs everything             - Here All in one Single FIle So you Can Run Easily .
 │
 ├── charts/
 │   ├── p8_01_kpi_summary.png
