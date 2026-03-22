@@ -8,3 +8,7 @@ build/
 *.html linguist-detectable=false
 *.css linguist-detectable=false
 *.js linguist-vendored=true
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
